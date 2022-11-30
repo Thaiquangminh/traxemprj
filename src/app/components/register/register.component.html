@@ -1,0 +1,147 @@
+<form action="" [formGroup]="formData" (ngSubmit)="handleSubmit()">
+  <div class="col-md-5 col-lg-5 col-xl-5 col-sm-7 col-8 wrapper">
+    <div class="header mb-5 mt-5"><h1 class="title">Đăng Ký</h1></div>
+
+    <!-- Main -->
+
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        name=""
+        placeholder="* Vui lòng nhập họ tên chính xác"
+        formControlName="name"
+      />
+      <div
+        class="alert alert-danger mt-3"
+        role="alert"
+        *ngIf="
+          formData.controls['name'].dirty &&
+          formData.controls['name'].getError('required') != null
+        "
+      >
+        Họ và tên không hợp lệ
+      </div>
+      <div
+        class="alert alert-danger mt-3"
+        role="alert"
+        *ngIf="formData.controls['name'].getError('minlength') != null"
+      >
+        Độ dài phải lớn hơn 3 ký tự
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        name=""
+        placeholder="Vui lòng nhập tên đăng nhập"
+        formControlName="username"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="textbox"
+        class="form-control"
+        name=""
+        placeholder="Địa chỉ email của bạn"
+        formControlName="email"
+      />
+      <div
+        class="alert alert-danger mt-3"
+        role="alert"
+        *ngIf="
+          formData.controls['email'].dirty &&
+          formData.controls['email'].getError('pattern') != null
+        "
+      >
+        Email không đúng cú pháp
+      </div>
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        name=""
+        placeholder="Số điện thoại của bạn"
+        formControlName="phone"
+      />
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        name=""
+        placeholder="Mật khẩu"
+        formControlName="password"
+      />
+      <div
+      class="alert alert-danger mt-3"
+      role="alert"
+      *ngIf="
+        formData.controls['password'].dirty &&
+        formData.controls['password'].getError('required') != null
+      "
+    >
+      Mật khẩu không hợp lệ
+    </div>
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        name=""
+        placeholder="Nhập lại mật khẩu"
+        formControlName="checkPassword"
+      />
+      <div
+        class="alert alert-danger mt-3"
+        role="alert"
+        *ngIf="
+          formData.controls['checkPassword'].dirty &&
+          formData.controls['checkPassword'].getError('MustMatch') != null
+        "
+      >
+        Mật khẩu không khớp
+      </div>
+      <div
+        class="alert alert-danger mt-3"
+        role="alert"
+        *ngIf="
+          formData.controls['checkPassword'].dirty &&
+          formData.controls['checkPassword'].getError('required') != null
+        "
+      >
+        Mật khẩu không hợp lệ
+      </div>
+    </div>
+
+    <!-- Footer -->
+
+    <div class="mb-3 register_note">
+      Ghi chú: Mục có dấu (<span class="register_mustEnter">*</span>) là thông tin bắt buộc cần nhập.
+    </div>
+
+    <div class="form-check mb-5 register_check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id=""
+        formControlName="checkbox"
+      />
+      <label class="form-check-label" for="">
+        Đồng ý với tất cả điều khoản của chúng tôi
+      </label>
+    </div>
+    <button
+      type="submit"
+      [disabled]="formData.invalid"
+      class="btn btn-success form-control"
+    >
+      Đăng ký ngay
+    </button>
+  </div>
+  <!-- [disabled]="formData.invalid" -->
+</form>
